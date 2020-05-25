@@ -14,7 +14,10 @@ public class ArrayStack<E> implements Stack<E> {
         array = new Array<>();
     }
 
-
+    /**
+     * 插入时，需要 new Node() 操作，比较耗时
+     * @param e
+     */
     @Override
     public void push(E e) {
 
