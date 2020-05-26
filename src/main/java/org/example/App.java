@@ -91,7 +91,6 @@ public class App
 //        System.out.println("ArrayStack, time: " + time3);
 //        System.out.println("LinkedListStack, time: " + time4);
 
-
         int[] nums = {1,2,3,4,5,6,7,8};
         System.out.println(sum(nums));
     }
