@@ -1,5 +1,7 @@
 package bilian.tech.zhang.javastarter.bst;
 
+import bilian.tech.zhang.javastarter.stack.ArrayStack;
+
 public class BST<E extends Comparable<E>> {
 
     private class Node{
@@ -131,6 +133,60 @@ public class BST<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
+    //前序遍历的非递归实现  需要将节点记录到栈中
+    public void preOrder01(){
+        if (root == null){
+            return;
+        }
+
+        ArrayStack<Node> stacks = new ArrayStack<>();
+        stacks.push(root);
+
+        while (!stacks.isEmpty()){
+
+            Node node = stacks.pop();
+
+            System.out.println(node.e);
+
+            if (node.right != null){
+                stacks.push(node.right);
+            }
+            if (node.left != null){
+                stacks.push(node.left);
+            }
+        }
+
+    }
+
+    //中序遍历的方式产生的数据都是有序的
+    public void inOrder(){
+        inOrder(root);
+    }
+
+
+    private void inOrder(Node node){
+        if (node == null){
+            return;
+        }
+        inOrder(node.left);
+        System.out.println(node.e);
+        inOrder(node.right);
+    }
+
+    public void postOrder(){
+
+        postOrder(root);
+    }
+    public void postOrder(Node node){
+        if (node == null){
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
     public static void main(String[] args) {
         BST<Integer> bst = new BST<>();
         int[] nums = {8, 5, 3, 9, 7};
@@ -141,6 +197,14 @@ public class BST<E extends Comparable<E>> {
         bst.preOrder();
 
         System.out.println("\n" + bst);
+
+        bst.inOrder();
+
+        System.out.println();
+        bst.postOrder();
+
+        System.out.println();
+        bst.preOrder01();
     }
 
     /**
